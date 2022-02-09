@@ -1,5 +1,5 @@
-function card(){
-    document.createElement("div");
+function createElement(Bauthor, Btitle, Bimg, Bprice, Binfo){
+    
 }
 
 
@@ -8,6 +8,6 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
 .then(data => {
     var book = data.results.books;
     book.forEach(element => {
-        console.log(element.author);
+        console.log(element);
     });
 });

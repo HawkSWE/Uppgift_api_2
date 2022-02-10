@@ -1,7 +1,9 @@
 function createElement(Bauthor, Btitle, Bimg, Bprice, Binfo){
     var div1 = $("<div></div>").attr('class', 'card');
-    var cardIMG = $("<img>").attr('class', 'card-img');
+    var cardIMG = $("<img>").attr('class', 'card-img-top');
     cardIMG.appendTo(div1);
+    var div2 = $("<div></div>").attr('class', 'card-body');
+    div2.appendTo(div1);
 
 
 

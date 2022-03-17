@@ -19,7 +19,15 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
     var book = data.results.books;
     book.forEach(element => {
         
-        var author = element.author[0];
-        console.log(author);
+        var nummer = 0;
+        var author = element.author;
+
+        const förf = [];
+        förf[nummer]= author;
+        
+        console.log(förf[nummer]);
+
+        nummer++;
+
     });
 });

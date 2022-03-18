@@ -21,11 +21,28 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
         
         var nummer = 0;
         var author = element.author;
+        var titel = element.title;
+        var besk = element.description;
+        var bild = element.book_image;
+        var is = element.primary_isbn10;
 
         const förf = [];
-        förf[nummer]= author;
+        const tit = [];
+        const beskrivning = [];
+        const bilder = [];
+        const isbn = [];
+
+        förf[nummer] = author;
+        tit[nummer] = titel;
+        beskrivning[nummer] = besk;
+        bilder[nummer] = bild;
+        isbn[nummer] = is;
         
         console.log(förf[nummer]);
+        console.log(tit[nummer]);
+        console.log(beskrivning[nummer]);
+        console.log(bilder[nummer]);
+        console.log(isbn[nummer]);
 
         nummer++;
 

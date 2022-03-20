@@ -26,10 +26,16 @@ function createElement(Bauthor, Btitle, Bimg, Binfo){
 
 function getPrice(isbn10){
 
-    $.get( "https://booksrun.com/api/price/sell/"+isbn10+"?key=esylhw1ujq6ohqj2l7te", function( data ) {
+    fetch('https://booksrun.com/api/price/sell/'+isbn10+'?key=esylhw1ujq6ohqj2l7te')
+    .then(response => response.json())
+    .then(data => {
+    
+        let Nprice = data.result.text.New;
 
-        console.log(data.result.text.new);
-      });
+        return Nprice;
+    
+    });
+
 }
 
 
@@ -40,11 +46,11 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
     book.forEach(element => {
         
         var nummer = 0;
-        var author = element.author;
-        var titel = element.title;
-        var besk = element.description;
-        var bild = element.book_image;
-        var is = element.primary_isbn10;
+        let author = element.author;
+        let titel = element.title;
+        let besk = element.description;
+        let bild = element.book_image;
+        let is = element.primary_isbn10;
 
         const förf = [];
         const tit = [];
@@ -58,7 +64,10 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
         bilder[nummer] = bild;
         isbn[nummer] = is;
 
-        getPrice(isbn[nummer]);
+        let nyPris = getPrice(isbn[nummer]);
+
+        console.log(nyPris);
+
         
         createElement(förf[nummer], tit[nummer], bilder[nummer], beskrivning[nummer])
 

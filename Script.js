@@ -1,15 +1,35 @@
-function createElement(Bauthor, Btitle, Bimg, Bprice, Binfo){
-    var div1 = $("<div></div>").attr('class', 'card');
+function createElement(Bauthor, Btitle, Bimg, Binfo){
+    var div1 = $("<div></div>").attr('class', 'card').attr('style', 'width: 18rem;');
     var cardIMG = $("<img>").attr('class', 'card-img-top').attr('src', Bimg).attr('alt', Btitle);
     cardIMG.appendTo(div1);
     var div2 = $("<div></div>").attr('class', 'card-body');
     div2.appendTo(div1);
+    var h51 = $("<h5></h5>").attr('class', 'card-title').append(Btitle);
+    h51.appendTo(div2);
+    var br1 = $("<br></br>");
+    br1.appendTo(div2);
+    var h61 = $("<h6></h6>").attr('class', 'card-subtitle', 'text-muted').append("författare: ", Bauthor);
+    h61.appendTo(div2);
+    var br2 = $("<br></br>");
+    br2.appendTo(div2);
+    var p1 = $("<p></p>").attr('class', 'card-text').append(Binfo);
+    p1.appendTo(div2);
+    var br3 = $("<br></br>");
+    br3.appendTo(div2);
 
 
 
     var cardElem = div1.appendTo('body');
 
     return cardElem;
+}
+
+function getPrice(isbn10){
+
+    $.get( "https://booksrun.com/api/price/sell/"+isbn10+"?key=esylhw1ujq6ohqj2l7te", function( data ) {
+
+        console.log(data.result.text.new);
+      });
 }
 
 
@@ -37,12 +57,10 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
         beskrivning[nummer] = besk;
         bilder[nummer] = bild;
         isbn[nummer] = is;
+
+        getPrice(isbn[nummer]);
         
-        console.log(förf[nummer]);
-        console.log(tit[nummer]);
-        console.log(beskrivning[nummer]);
-        console.log(bilder[nummer]);
-        console.log(isbn[nummer]);
+        createElement(förf[nummer], tit[nummer], bilder[nummer], beskrivning[nummer])
 
         nummer++
 

@@ -1,6 +1,6 @@
 function createElement(Bauthor, Btitle, Bimg, Bprice, Binfo){
     var div1 = $("<div></div>").attr('class', 'card');
-    var cardIMG = $("<img>").attr('class', 'card-img-top');
+    var cardIMG = $("<img>").attr('class', 'card-img-top').attr('src', Bimg).attr('alt', Btitle);
     cardIMG.appendTo(div1);
     var div2 = $("<div></div>").attr('class', 'card-body');
     div2.appendTo(div1);
@@ -38,6 +38,11 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
         bilder[nummer] = bild;
         isbn[nummer] = is;
         
+        console.log(förf[nummer]);
+        console.log(tit[nummer]);
+        console.log(beskrivning[nummer]);
+        console.log(bilder[nummer]);
+        console.log(isbn[nummer]);
 
         nummer++
 

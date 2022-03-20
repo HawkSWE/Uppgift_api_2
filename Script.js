@@ -39,14 +39,7 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json
         isbn[nummer] = is;
         
 
-
-        $.get( "https://booksrun.com/api/price/sell/"+isbn[nummer]+"?key=esylhw1ujq6ohqj2l7te", function( data ) {
-
-
-        console.log(data);
-        });
-
-        nummer++;
+        nummer++
 
     });
 });
